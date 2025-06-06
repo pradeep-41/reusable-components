@@ -1,0 +1,232 @@
+/* Base layout helpers */
+.loader-wrapper.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader-wrapper.fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+/* Spinner */
+.loader-spinner {
+  border: 4px solid #eee;
+  border-top: 4px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Ellipsis */
+.loader-ellipsis {
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+}
+.loader-ellipsis div {
+  width: 10px;
+  height: 10px;
+  background: currentColor;
+  border-radius: 50%;
+  animation: bounce 0.6s infinite ease-in-out;
+}
+.loader-ellipsis div:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.loader-ellipsis div:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* Pulse */
+.loader-pulse {
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  border-radius: 50%;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+/* Bar */
+.loader-bar {
+  width: 100px;
+  height: 6px;
+  background: #ccc;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+}
+.loader-bar::before {
+  content: "";
+  position: absolute;
+  left: -40%;
+  width: 40%;
+  height: 100%;
+  background: currentColor;
+  animation: barSlide 1.2s infinite ease-in-out;
+}
+
+/* Wave */
+.loader-wave {
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  height: 20px;
+}
+.loader-wave div {
+  width: 6px;
+  height: 100%;
+  background: currentColor;
+  animation: waveBounce 1.2s infinite ease-in-out;
+}
+.loader-wave div:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.loader-wave div:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.loader-wave div:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.loader-wave div:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* Dot Ring */
+.loader-dot-ring {
+  border: 4px solid transparent;
+  border-top-color: currentColor;
+  border-right-color: currentColor;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+/* Dual Ring */
+.loader-dual-ring::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  border-radius: 50%;
+  border: 4px solid currentColor;
+  border-color: currentColor transparent currentColor transparent;
+  animation: dualSpin 1.2s linear infinite;
+}
+
+/* Cube */
+.loader-cube {
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  animation: cubeFlip 1s infinite ease-in-out;
+}
+
+/* Skeleton */
+.loader-skeleton {
+  width: 100%;
+  height: 1em;
+  background: linear-gradient(
+    to right,
+    #eee 0%,
+    #ddd 20%,
+    #eee 40%,
+    #eee 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 1.5s linear infinite;
+  border-radius: 4px;
+}
+
+/* Text Loader */
+.loader-text {
+  font-family: monospace;
+  font-weight: bold;
+  color: currentColor;
+  animation: blink 1s steps(2, start) infinite;
+}
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.6;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes barSlide {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes waveBounce {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(2);
+  }
+}
+
+@keyframes dualSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cubeFlip {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}

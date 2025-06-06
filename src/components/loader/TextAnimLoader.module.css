@@ -1,0 +1,20 @@
+/* text animation of loading */
+.loader {
+  --c: #000;
+  width: fit-content;
+  font-weight: bold;
+  font-family: monospace;
+  overflow: hidden;
+  font-size: 30px;
+  color: #0000;
+  text-shadow: 0 0 var(--c), 11ch 0 var(--c);
+  animation: loader 2s infinite linear;
+}
+.loader:before {
+  content: "Loading...";
+}
+@keyframes loader {
+  to {
+    text-shadow: -11ch 0 var(--c), 0ch 0 var(--c);
+  }
+}
