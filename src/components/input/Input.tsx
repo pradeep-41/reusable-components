@@ -22,7 +22,7 @@ export const Input: React.FC<InputProps> = ({
   ...props
 }) => {
   const baseStyles =
-    "transition-all duration-200 ease-in-out w-full focus:outline-none";
+    "transition-all duration-200 ease-in-out w-72 focus:outline-none";
 
   const variantStyles: Record<InputVariant, string> = {
     default:

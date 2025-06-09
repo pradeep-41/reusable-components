@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { Heading } from "./components/typography/Heading";
-import { Text, type TextVariant } from "./components/typography/Text";
-import { Button, type ButtonVariant } from "./components/buttons/Button";
+import {
+  TypoText,
+  type TypoTextVariant,
+} from "./components/typography/TypoText";
+import { Button, type ButtonVariant } from "./components/ui/Button";
 import TextAnimLoader from "./components/loader/TextAnimLoader";
 import { Input, type InputVariant } from "./components/input/Input";
 import { Loader, type LoaderVariant } from "./components/loader/Loader";
+import { Text, type TextVariant } from "./components/typography/Text";
 
 const App: React.FC = () => {
   const [count, setCount] = useState(1);
-  const numbers = [6, 5, 4, 3, 2, 1];
+  const numbers = [6, 5, 4, 3, 2, 1] as const;
 
   const variants: ButtonVariant[] = [
     "light",
@@ -24,7 +28,7 @@ const App: React.FC = () => {
     "link",
   ];
 
-  const variantsText: TextVariant[] = [
+  const variantsText: TypoTextVariant[] = [
     "default",
     "muted",
     "danger",
@@ -60,6 +64,30 @@ const App: React.FC = () => {
     "skeleton",
   ];
 
+  const textVariant: TextVariant[] = [
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "p1",
+    "p2",
+    "p3",
+    "p4",
+    "caption",
+    "label",
+    "overline",
+    "blockquote",
+    "muted",
+    "danger",
+    "success",
+    "highlight",
+    "secondary",
+    "small",
+    "subtitle",
+  ];
+
   const handleClick = () => {
     setCount((prev) => {
       const updated = prev + 1;
@@ -93,7 +121,7 @@ const App: React.FC = () => {
         </h2>{" "}
         <div className="min-h-screen flex flex-col justify-center items-center">
           {variantsText.map((text) => (
-            <Text variant={text}>This is a {text} paragraph </Text>
+            <TypoText variant={text}>This is a {text} paragraph </TypoText>
           ))}
         </div>
       </>
@@ -115,6 +143,7 @@ const App: React.FC = () => {
 
         <div className="flex justify-center items-center min-h-screen">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
+            <Button variant="danger">Click here!!</Button>
             {variants.map((variant) => (
               <Button key={variant} variant={variant} onClick={handleClick}>
                 Click here!!
@@ -123,11 +152,11 @@ const App: React.FC = () => {
           </div>
         </div>
       </>
-      <div className="min-h-screen">
+      <div className="min-h-screen flex flex-col justify-center items-center">
         <h2 className="text-center text-3xl font-semibold">
           This is a Custom inputs
         </h2>
-        <div className=" grid grid-cols-2 gap-5 justify-center items-center m-10 p-10">
+        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-6 justify-center items-center m-10 p-10">
           {inputVariants.map((inp) => (
             <Input key={inp} variant={inp} />
           ))}
@@ -139,6 +168,26 @@ const App: React.FC = () => {
           This is a Custom Text Loader
         </h2>
         <TextAnimLoader />
+      </>
+      <div className="flex flex-col justify-center items-center">
+        <Button
+          as="div"
+          className="cursor-pointer bg-yellow-300 px-4 py-2 rounded">
+          I'm a <code> div </code>
+        </Button>
+        <Button variant="link" as="a" href="https://google.com" target="_blank">
+          Open Google
+        </Button>
+      </div>
+      <>
+        {textVariant.map((variant) => (
+          <>
+            <Text key={variant} variant={variant}>
+              This is a {variant} text
+            </Text>
+            <br />
+          </>
+        ))}
       </>
     </>
   );

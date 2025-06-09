@@ -1,3 +1,5 @@
+// /src/components/typograpgy/heading.tsx
+
 import React from "react";
 
 type HeadingProps = {
